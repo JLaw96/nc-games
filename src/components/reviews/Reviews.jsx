@@ -1,11 +1,12 @@
 import { useState, useEffect } from "react";
-import getReviews from "../utils/api's";
+import { getReviews } from "../utils/api's";
 
 const Reviews = () => {
   const [reviews, setReviews] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
+    setIsLoading(true);
     getReviews().then((reviewsFromApi) => {
       setReviews(reviewsFromApi);
       setIsLoading(false);
