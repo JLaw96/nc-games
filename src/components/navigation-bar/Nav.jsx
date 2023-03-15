@@ -1,13 +1,13 @@
 import { Link } from "react-router-dom";
 const Nav = () => {
   return (
-    <ul>
+    <main>
       <button>Categories</button>
       <button>
-        <Link to="/reviews"></Link>Reviews
+        <Link to="/reviews">Reviews</Link>
       </button>
       <button>Users</button>
-    </ul>
+    </main>
   );
 };
 

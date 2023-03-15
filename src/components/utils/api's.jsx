@@ -11,15 +11,8 @@ export const getReviews = () => {
 };
 
 export const getReviewById = (review_id) => {
-  let path = `/reviews`;
-  return gamesApi
-    .get(path, {
-      params: {
-        review_id: review_id,
-        limit: 15,
-      },
-    })
-    .then(({ data }) => {
-      return data.reviews;
-    });
+  let path = `/reviews/${review_id}`;
+  return gamesApi.get(path).then(({ data }) => {
+    return data.reviews;
+  });
 };
