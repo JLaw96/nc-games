@@ -24,6 +24,7 @@ const SingleReview = () => {
         <ul>
           <li key={review.review_id}>
             <h4>Title: {review.title}</h4>
+            <p>Review: {review.review_body}</p>
             <h5>Votes: {review.votes}</h5>
             <img src={review.review_img_url} alt={review.title}></img>
             <p>Designer: {review.designer}</p>
