@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { getComments } from "../utils/api's";
@@ -17,6 +18,17 @@ const Comments = () => {
 
   if (isLoading) {
     return <p>Loading...</p>;
+  } else if (comments.length === 0) {
+    return (
+      <>
+        <p>Currently, there are no comments for this review</p>
+        <p>
+          <Link to={`/reviews/${review_id}`}>
+            Click here to return to the review
+          </Link>
+        </p>
+      </>
+    );
   } else {
     return (
       <main>
@@ -31,6 +43,11 @@ const Comments = () => {
               </li>
             );
           })}
+          <p>
+            <Link to={`/reviews/${review_id}`}>
+              Click here to return to the review
+            </Link>
+          </p>
         </ul>
       </main>
     );
