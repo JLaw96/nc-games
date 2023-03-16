@@ -1,4 +1,5 @@
 import "./Single-Review.css";
+import { Link } from "react-router-dom";
 import { useState, useEffect } from "react";
 import { getReviewById } from "../utils/api's";
 import { useParams } from "react-router-dom";
@@ -30,6 +31,11 @@ const SingleReview = () => {
             <p>Designer: {review.designer}</p>
             <p>Owner: {review.owner}</p>
             <p>Category: {review.category}</p>
+            <p>
+              <Link to={`/reviews/${review.review_id}/comments`}>
+                Click here to see comments related to this review
+              </Link>
+            </p>
           </li>
         </ul>
       </main>
