@@ -1,10 +1,16 @@
 import "./Single-Review.css";
 import { Link } from "react-router-dom";
 import { useState, useEffect } from "react";
-import { getReviewById } from "../utils/api's";
+import {
+  getReviewById,
+  voteUpOnReview,
+  voteDownOnReview,
+} from "../utils/api's";
 import { useParams } from "react-router-dom";
 
 const SingleReview = () => {
+  const [userVote, setUserVote] = useState(0);
+  const [isVotingErr, setIsVotingErr] = useState(false);
   const [review, setReview] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const { review_id } = useParams();
@@ -16,6 +22,31 @@ const SingleReview = () => {
       setIsLoading(false);
     });
   }, [review_id]);
+
+  const onClickUp = () => {
+    setIsVotingErr(false);
+    setUserVote(1);
+    setReview((currentReviews) => {
+      return { ...currentReviews, votes: currentReviews.votes + 1 };
+    });
+    voteUpOnReview(review_id).catch(() => {
+      setUserVote(0);
+      setIsVotingErr(true);
+    });
+  };
+
+  const onClickDown = () => {
+    setIsVotingErr(false);
+    setUserVote(-1);
+    setReview((currentReviews) => {
+      return { ...currentReviews, votes: currentReviews.votes - 1 };
+    });
+    voteDownOnReview(review_id).catch(() => {
+      setUserVote(0);
+      setIsVotingErr(true);
+    });
+  };
+
   if (isLoading) {
     return <p>Loading...</p>;
   } else {
@@ -28,6 +59,14 @@ const SingleReview = () => {
             <p>Review: {review.review_body}</p>
             <h5>Votes: {review.votes}</h5>
             <img src={review.review_img_url} alt={review.title}></img>
+            <p>{""}</p>
+            <button onClick={onClickUp} disabled={userVote !== 0}>
+              👍
+            </button>
+            <button onClick={onClickDown} disabled={userVote !== 0}>
+              👎
+            </button>
+            {isVotingErr && <p>That vote was not successful</p>}
             <p>Designer: {review.designer}</p>
             <p>Owner: {review.owner}</p>
             <p>Category: {review.category}</p>
