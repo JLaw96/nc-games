@@ -16,3 +16,10 @@ export const getReviewById = (review_id) => {
     return data.reviews;
   });
 };
+
+export const getComments = (review_id) => {
+  let path = `/reviews/${review_id}/comments`;
+  return gamesApi.get(path).then(({ data }) => {
+    return data.comments;
+  });
+};
