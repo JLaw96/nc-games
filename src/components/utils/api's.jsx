@@ -23,3 +23,25 @@ export const getComments = (review_id) => {
     return data.comments;
   });
 };
+
+export const voteUpOnReview = (review_id) => {
+  let path = `/reviews/${review_id}`;
+  return gamesApi
+    .patch(path, {
+      inc_votes: 1,
+    })
+    .then(({ data }) => {
+      return data.comments;
+    });
+};
+
+export const voteDownOnReview = (review_id) => {
+  let path = `/reviews/${review_id}`;
+  return gamesApi
+    .patch(path, {
+      inc_votes: -1,
+    })
+    .then(({ data }) => {
+      return data.comments;
+    });
+};

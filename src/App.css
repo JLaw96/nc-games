@@ -1,3 +1,13 @@
 .App {
   text-align: center;
 }
+
+html {
+  text-align: center;
+  background-color: #171823;
+  margin: 0px;
+  padding: 0px;
+  color: #b40f0f;
+  text-shadow: 0px 0px 3px rgb(8, 2, 2);
+  font-size: 100%;
+}
