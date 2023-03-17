@@ -23,6 +23,7 @@ const SingleReview = () => {
     });
   }, [review_id]);
 
+  console.log(review, "review in the single review file");
   const onClickUp = () => {
     setIsVotingErr(false);
     setUserVote(1);
@@ -30,6 +31,9 @@ const SingleReview = () => {
       return { ...currentReviews, votes: currentReviews.votes + 1 };
     });
     voteUpOnReview(review_id).catch(() => {
+      setReview((currentReviews) => {
+        return { ...currentReviews, votes: currentReviews.votes - 1 };
+      });
       setUserVote(0);
       setIsVotingErr(true);
     });
@@ -42,6 +46,9 @@ const SingleReview = () => {
       return { ...currentReviews, votes: currentReviews.votes - 1 };
     });
     voteDownOnReview(review_id).catch(() => {
+      setReview((currentReviews) => {
+        return { ...currentReviews, votes: currentReviews.votes + 1 };
+      });
       setUserVote(0);
       setIsVotingErr(true);
     });

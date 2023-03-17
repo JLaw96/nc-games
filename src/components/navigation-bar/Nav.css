@@ -1,0 +1,26 @@
+.nav-button {
+  border-style: none;
+  margin: 5px;
+  font-size: 120%;
+  padding: 3%;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  background-color: #6b5ebf;
+  color: #171823;
+  border-radius: 10px;
+  box-shadow: 0px 0px 10px #676ca6;
+  font-weight: 1000;
+}
+
+.nav-button:link {
+  text-decoration: none;
+}
+.nav-button:visited {
+  text-decoration: none;
+}
+.nav-button:hover {
+  text-decoration: none;
+}
+.nav-button:active {
+  text-decoration: none;
+}
