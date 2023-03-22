@@ -48,6 +48,9 @@ const Comments = () => {
               Click here to return to the review
             </Link>
           </p>
+          <p>
+            If you would like to add a comment of your own, you can do so below!
+          </p>
         </ul>
       </main>
     );

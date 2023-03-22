@@ -4,7 +4,7 @@ const Header = () => {
   return (
     <main>
       <h1 className="header">NC Games</h1>
-      <img src={logo} alt="Crash Bandicoot" />
+      <img className="crash" src={logo} alt="Crash Bandicoot" />
     </main>
   );
 };

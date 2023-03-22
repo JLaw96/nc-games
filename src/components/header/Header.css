@@ -3,3 +3,8 @@
   font-weight: bold;
   text-shadow: 0px 0px 3px rgb(97, 26, 26);
 }
+
+.crash {
+  height: 200px;
+  width: 250 px;
+}
